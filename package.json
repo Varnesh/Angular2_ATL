@@ -1,0 +1,25 @@
+{
+  "name": "atl_server",
+  "version": "1.0.0",
+  "description": "ATL Server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Varnesh/Angular2_ATL.git"
+  },
+  "author": "Varnesh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Varnesh/Angular2_ATL/issues"
+  },
+  "homepage": "https://github.com/Varnesh/Angular2_ATL#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.2.1",
+    "mongoose": "^4.12.2"
+  }
+}
