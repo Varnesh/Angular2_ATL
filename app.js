@@ -1,7 +1,8 @@
 var express = require('express');
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 
-var db = mongoose.connect('mongodb://localhost/bookAPI');
+var db = mongoose.connect('mongodb://varnesh.kp:admin@ds121955.mlab.com:21955/atl_db');
 
 var Book = require('./models/bookModel');
 
@@ -9,18 +10,15 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-var bookRouter = express.Router();
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
-bookRouter.route('/Books')
-          .get(function(req, res){
-              var responseJson = {help:"This is my api"};
+bookRouter = require('./routes/bookRoutes')(Book);
 
-              res.json(responseJson);
-          });
 app.use('/api', bookRouter);
 
 app.get('/', function(req,res) {
-    res.send('Welcome to ATL API ***');
+    res.send('Welcome to ATL API');
 });
 
 app.listen(port, function(){
