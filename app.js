@@ -2,6 +2,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
+
 var db = mongoose.connect('mongodb://varnesh.kp:admin@ds121955.mlab.com:21955/atl_db');
 
 var Book = require('./models/bookModel');
@@ -13,12 +14,23 @@ var port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-bookRouter = require('./routes/bookRoutes')(Book);
+bookRouter = require('./routes/bookRoutes');
 
-app.use('/api', bookRouter);
+var atlCtrl = require('./controllers/atl.server.controller');
 
+/* GET Home Page */
 app.get('/', function(req,res) {
     res.send('Welcome to ATL API');
+}); 
+
+/* POST new book */
+app.post('/api/createBook', function(req,res) {
+    return atlCtrl.create(req, res);
+})
+
+/* GET list of books */
+app.get('/api/books', function(req, res) {
+    return atlCtrl.getBooks(req, res);
 });
 
 app.listen(port, function(){
