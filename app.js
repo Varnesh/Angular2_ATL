@@ -33,6 +33,11 @@ app.get('/api/books', function(req, res) {
     return atlCtrl.getBooks(req, res);
 });
 
+/* Find a specific book */
+app.get('/api/:bookId', function(req, res) {
+    return atlCtrl.findBookById(req, res);
+});
+
 app.listen(port, function(){
     console.log('Running on PORT: ' + port);
 })

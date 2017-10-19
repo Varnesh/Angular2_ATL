@@ -16,3 +16,8 @@ router.post('/createBook', function(req,res) {
 router.get('/books', function(req, res) {
     return atlCtrl.getBooks(req, res);
 });
+
+/* Find a specific book */
+router.get('/:bookId', function(req, res) {
+    return atlCtrl.findBookById(req, res);
+});
