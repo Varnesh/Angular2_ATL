@@ -3,7 +3,11 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 
 
-var db = mongoose.connect('mongodb://varnesh.kp:admin@ds121955.mlab.com:21955/atl_db');
+var db;
+if (process.env.ENV == 'Test')
+    mongoose.connect('mongodb://varnesh.kp:admin@ds227865.mlab.com:27865/atl_db_test');
+else
+    mongoose.connect('mongodb://varnesh.kp:admin@ds121955.mlab.com:21955/atl_db');
 
 var Book = require('./models/bookModel');
 
@@ -40,4 +44,6 @@ app.get('/api/:bookId', function(req, res) {
 
 app.listen(port, function(){
     console.log('Running on PORT: ' + port);
-})
+});
+
+module.exports = app;
