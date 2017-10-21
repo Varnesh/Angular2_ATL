@@ -38,7 +38,7 @@ app.get('/api/books', function(req, res) {
 });
 
 /* Find a specific book */
-app.get('/api/:bookId', function(req, res) {
+app.get('/api/books/:bookId', function(req, res) {
     return atlCtrl.findBookById(req, res);
 });
 
